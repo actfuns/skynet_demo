@@ -1,18 +1,8 @@
-local skynet = require "skynet"
+local skynet = require("skynet")
+local cjson = require("cjson")
 
 skynet.start(function()
-	local loginserver = skynet.newservice("logind")
-	local gate = skynet.newservice("gated", loginserver)
-
-	skynet.call(gate, "lua", "open" , {
-		port = 8888,
-		maxclient = 64,
-		servername = "sample",
-	})
-	gate = skynet.newservice("gated", loginserver)
-	skynet.call(gate, "lua", "open" , {
-		port = 8889,
-		maxclient = 64,
-		servername = "sample",
-	})
+	-- print(cjson.encode({a=1}))
+	-- skynet.newservice("syslog")
+	skynet.newservice("wsgate")
 end)
