@@ -19,8 +19,7 @@ skynet.register_protocol {
         skynet.ignoreret()  -- session is fd, don't call skynet.ret
         --skynet.trace()
         -- echo simple
-        -- skynet.send(gate, "lua", "response", fd, msg)
-        websocket.write(fd, msg)
+        skynet.send(gate, "lua", "response", fd, msg)
         skynet.error(address, msg)
     end
 }
