@@ -22,7 +22,7 @@ LUA_INC ?= $(SKYNET_ROOT)3rd/lua
 # skynet
 
 MCSERVICE = syslog
-LUA_CLIB = cjson
+LUA_CLIB = cjson log
 
 all : \
   $(foreach v, $(MCSERVICE), $(MCSERVICE_PATH)/$(v).so) \
@@ -33,6 +33,9 @@ $(MCSERVICE_PATH) :
 
 $(LUA_CLIB_PATH) :
 	mkdir $(LUA_CLIB_PATH)
+
+$(LUA_CLIB_PATH)/log.so : lualib-src/lua-log.c | $(LUA_CLIB_PATH)
+	$(CC) $(CFLAGS) $(SHARED) $^ -o $@
 
 $(MCSERVICE_PATH)/syslog.so : service-src/service_syslog.c | $(MCSERVICE_PATH)
 	$(CC) $(CFLAGS) $(SHARED) $< -o $@ -I$(SKYNET_ROOT)skynet-src

@@ -4,6 +4,8 @@ thread = 8
 harbor = 0
 start = "main"	-- main script
 bootstrap = "snlua bootstrap"	-- The service for bootstrap
+--logger = "./skynet.log" 
+--daemon = "./skynet.pid" 
 
 lua_path = skynet_root.."lualib/?.lua;"..root.."lualib/?.lua;"..root.."lualib/base/?.lua;"
 lua_cpath = skynet_root.."luaclib/?.so;"..root.."luaclib/?.so"
