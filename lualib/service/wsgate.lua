@@ -92,7 +92,7 @@ end
 function handler.error(fd)
     skynet.error("ws error from: " .. tostring(fd))
     close_fd(fd)
-    skynet.send(watchdog, "lua", "socket", "error", fd, msg)
+    skynet.send(watchdog, "lua", "socket", "error", fd)
 end
 
 function handler.warning(fd, size)
@@ -155,8 +155,8 @@ skynet.start(function()
         end
     end)
 
-    skynet.register(".ws_gate")
+    skynet.register(".wsgate")
 
-    skynet.error("ws_gate booted...")
+    skynet.error("wsgate booted...")
 end)
 

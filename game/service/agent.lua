@@ -1,5 +1,6 @@
 local skynet = require "skynet"
 local socket = require "skynet.socket"
+local websocket = require "http.websocket"
 
 local WATCHDOG
 local host
@@ -18,7 +19,8 @@ skynet.register_protocol {
         skynet.ignoreret()  -- session is fd, don't call skynet.ret
         --skynet.trace()
         -- echo simple
-        skynet.send(gate, "lua", "response", fd, msg)
+        -- skynet.send(gate, "lua", "response", fd, msg)
+        websocket.write(fd, msg)
         skynet.error(address, msg)
     end
 }
