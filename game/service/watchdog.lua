@@ -8,7 +8,7 @@ local protocol
 
 function SOCKET.open(fd, addr)
     skynet.error("New client from : " .. addr)
-    agent[fd] = skynet.newservice("ws_agent")
+    agent[fd] = skynet.newservice("agent")
     skynet.call(agent[fd], "lua", "start", {
         gate = gate,
         client = fd,
@@ -68,6 +68,6 @@ skynet.start(function()
         end
     end)
 
-    gate = skynet.newservice("ws_gate")
+    gate = skynet.newservice("wsgate")
 end)
 

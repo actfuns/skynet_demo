@@ -1,0 +1,8 @@
+skynet_root = "./3rd/skynet/"
+root = "./"
+
+lua_path = skynet_root.."lualib/?.lua;"..root.."lualib/?.lua;"
+lua_cpath = skynet_root.."luaclib/?.so;"..root.."luaclib/?.so;"
+cpath = skynet_root.."cservice/?.so;"
+luaservice = skynet_root.."service/?.lua;"..root.."lualib/service/?.lua;"
+lualoader = skynet_root.."lualib/loader.lua"
